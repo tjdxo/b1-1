@@ -267,5 +267,3 @@ cd portfolio-website
 - `fetch`와 `async/await`를 이용한 비동기 데이터 처리
 - 상태에 따라 화면을 다르게 렌더링하는 방식
 - React로 넘어가기 전 필요한 웹 기초 개념
-
----
