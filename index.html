@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나를 소개하는 포트폴리오</title>
+  <meta name="description" content="순수 HTML, CSS, JavaScript로 만든 반응형 포트폴리오 웹사이트" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <script src="./js/main.js" defer></script>
+</head>
+<body>
+  <header class="header" id="top">
+    <nav class="nav container">
+      <a href="#top" class="logo">MyPortfolio</a>
+
+      <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
+        ☰
+      </button>
+
+      <div class="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#hero" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <button class="theme-toggle" aria-label="다크 모드 토글">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section id="hero" class="hero section">
+      <div class="container hero-content">
+        <p class="hero-greeting">안녕하세요 👋</p>
+        <h1>저는 <span class="highlight">홍길동</span>입니다.</h1>
+        <p class="hero-description">
+          순수 HTML, CSS, JavaScript로 웹의 기본기를 쌓고 있는 프론트엔드 학습자입니다.
+        </p>
+        <div class="hero-buttons">
+          <a href="#projects" class="btn">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-secondary">문의하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about section reveal">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <img src="./images/profile.jpg" alt="홍길동 프로필 사진" class="profile-image" />
+          <div>
+            <p>
+              사용자 경험을 중요하게 생각하며, 작은 인터랙션도 직접 구현해보며 학습하고 있습니다.
+            </p>
+            <p>
+              이 프로젝트에서는 반응형 레이아웃, 다크 모드, DOM 조작, API 연동을 연습했습니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills section reveal">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <ul class="skills-list">
+          <li>HTML5</li>
+          <li>CSS3</li>
+          <li>JavaScript (ES6+)</li>
+          <li>Responsive Web</li>
+          <li>Git / GitHub</li>
+          <li>REST API</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="projects section reveal">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <p class="section-description">
+          GitHub API에서 저장소 목록을 불러옵니다.
+        </p>
+
+        <div id="projects-container" class="projects-container">
+          <!-- JS가 상태에 따라 로딩/성공/에러/빈 상태 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact section reveal">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+
+        <form id="contact-form" class="contact-form" novalidate>
+          <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" />
+            <small class="error-message" id="name-error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="email">이메일</label>
+            <input type="email" id="email" name="email" />
+            <small class="error-message" id="email-error"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="message">메시지</label>
+            <textarea id="message" name="message" rows="5"></textarea>
+            <small class="error-message" id="message-error"></small>
+          </div>
+
+          <button type="submit" class="btn">보내기</button>
+          <p id="form-success" class="form-success"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>© 2026 홍길동. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com/your-github-id" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scroll-top" class="scroll-top" aria-label="맨 위로 이동">
+    ↑
+  </button>
+</body>
+</html>
