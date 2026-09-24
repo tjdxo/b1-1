@@ -79,6 +79,13 @@ textarea {
 
 .section {
   padding: var(--spacing-xl) 0;
+  scroll-margin-top: var(--header-height);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 4px;
 }
 
 .section-title {
@@ -196,6 +203,13 @@ textarea {
   max-width: 650px;
   margin: 0 auto 1.5rem;
   color: var(--color-text-soft);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.hero-description-line {
+  display: block;
+  text-wrap: balance;
 }
 
 .hero-buttons {
@@ -248,9 +262,18 @@ textarea {
 }
 
 /* Skills */
+.skills-groups {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.skill-group h3 {
+  margin: 0 0 1rem;
+}
+
 .skills-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -261,6 +284,7 @@ textarea {
   padding: 1rem;
   box-shadow: var(--shadow);
   text-align: center;
+  overflow-wrap: anywhere;
 }
 
 /* Projects */
@@ -270,11 +294,13 @@ textarea {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 1.25rem;
 }
 
 .project-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
   background-color: var(--color-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
@@ -287,7 +313,7 @@ textarea {
   transform: translateY(-4px);
 }
 
-.project-card h3 {
+.project-card h4 {
   margin-top: 0;
   margin-bottom: 0.75rem;
   font-size: 1.15rem;
@@ -296,6 +322,64 @@ textarea {
 .project-card p {
   color: var(--color-text-soft);
   margin-bottom: 1rem;
+}
+
+.project-group + .project-group {
+  margin-top: var(--spacing-xl);
+}
+
+.subsection-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.4rem;
+}
+
+.featured-card {
+  display: flex;
+  flex-direction: column;
+  border-top: 3px solid var(--color-primary);
+}
+
+.featured-card .project-summary {
+  margin-top: 0;
+}
+
+.project-details {
+  margin: 0 0 1.5rem;
+}
+
+.project-details dt {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.project-details dt:first-child {
+  margin-top: 0;
+}
+
+.project-details dd {
+  margin: 0.35rem 0 0;
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+}
+
+.project-details strong {
+  color: var(--color-text);
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.project-tags li {
+  padding: 0.3rem 0.65rem;
+  border-radius: var(--radius);
+  background-color: var(--color-bg-soft);
+  border: 1px solid var(--color-border);
+  font-size: 0.8rem;
 }
 
 .project-meta {
@@ -482,8 +566,9 @@ textarea {
     gap: 2rem;
   }
 
-  .skills-list {
-    grid-template-columns: repeat(3, 1fr);
+  .skills-groups,
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .contact-form {
@@ -525,15 +610,17 @@ textarea {
     margin-top: 0;
   }
 
-  .hero-content {
-    text-align: center;
-  }
-
   .hero {
     min-height: 100vh;
   }
 
-  .skills-list {
-    grid-template-columns: repeat(6, 1fr);
+  .projects-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 768px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

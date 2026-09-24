@@ -65,6 +65,7 @@ const applyTheme = (theme) => {
   html.setAttribute("data-theme", theme);
   localStorage.setItem("theme", theme);
   themeToggle.textContent = theme === "dark" ? "☀️" : "🌙";
+  themeToggle.setAttribute("aria-label", theme === "dark" ? "라이트 모드로 전환" : "다크 모드로 전환");
 };
 
 const toggleTheme = () => {
@@ -80,11 +81,13 @@ const toggleMobileMenu = () => {
 
   const isExpanded = navMenu.classList.contains("active");
   navToggle.setAttribute("aria-expanded", String(isExpanded));
+  navToggle.setAttribute("aria-label", isExpanded ? "메뉴 닫기" : "메뉴 열기");
 };
 
 const closeMobileMenu = () => {
   navMenu.classList.remove("active");
   navToggle.setAttribute("aria-expanded", "false");
+  navToggle.setAttribute("aria-label", "메뉴 열기");
 };
 
 // ==============================
@@ -136,6 +139,7 @@ const handleNavLinkClick = (event) => {
 // 8. Projects 렌더링
 // ==============================
 const renderProjects = () => {
+  projectsContainer.setAttribute("aria-busy", String(state.projectsStatus === "loading"));
   if (state.projectsStatus === "loading") {
     projectsContainer.innerHTML = `
       <div class="state-box">
@@ -178,7 +182,7 @@ const renderProjects = () => {
 
         return `
           <article class="project-card">
-            <h3>${escapeHtml(name)}</h3>
+            <h4>${escapeHtml(name)}</h4>
             <p>${escapeHtml(description || "설명이 없는 프로젝트입니다.")}</p>
 
             <div class="project-meta">
@@ -234,7 +238,7 @@ const fetchProjects = async () => {
 
     const data = await response.json();
 
-    // 예시: fork 저장소 제외
+    // fork 저장소 제외
     const filteredProjects = data.filter((repo) => !repo.fork);
 
     // 최근 업데이트 기준 정렬
@@ -266,6 +270,9 @@ const renderFormErrors = () => {
   nameError.textContent = state.formErrors.name;
   emailError.textContent = state.formErrors.email;
   messageError.textContent = state.formErrors.message;
+  nameInput.setAttribute("aria-invalid", String(Boolean(state.formErrors.name)));
+  emailInput.setAttribute("aria-invalid", String(Boolean(state.formErrors.email)));
+  messageInput.setAttribute("aria-invalid", String(Boolean(state.formErrors.message)));
 };
 
 const validateName = () => {
@@ -335,10 +342,12 @@ const handleFormSubmit = (event) => {
 
   const isFormValid = validateForm();
 
-  if (!isFormValid) return;
+  if (!isFormValid) {
+    contactForm.querySelector('[aria-invalid="true"]').focus();
+    return;
+  }
 
-  formSuccess.textContent = "메시지가 성공적으로 전송되었습니다! (실제 전송 기능은 구현되어 있지 않습니다.)";
-  contactForm.reset();
+  formSuccess.textContent = "입력값 검증이 완료되었습니다. 데모 폼이므로 메시지는 전송되지 않았습니다.";
 
   state.formErrors = {
     name: "",

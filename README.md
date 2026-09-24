@@ -1,20 +1,28 @@
-# Portfolio Website
+# 김성태 | Portfolio Website
 
 순수 **HTML, CSS, JavaScript**만 사용하여 제작한 반응형 포트폴리오 웹사이트입니다.  
 외부 프레임워크 없이 웹의 기본 동작 원리인 **이벤트 → 상태 변경 → DOM 업데이트** 흐름을 직접 구현하는 것을 목표로 했습니다.
 
 ---
 
-## 배포 링크
+## 저장소
 
-- GitHub Repository: https://github.com/[GitHub 아이디]/portfolio-website
-- GitHub Pages: https://[GitHub 아이디].github.io/portfolio-website/
+- GitHub Repository: https://github.com/tjdxo/b1-1
+- GitHub Profile: https://github.com/tjdxo
+- GitHub Pages 배포 여부와 공개 URL은 아직 확인하지 않았습니다.
 
 ---
 
 ## 프로젝트 소개
 
-이 프로젝트는 나를 소개하는 웹페이지를 처음부터 직접 구현한 포트폴리오 사이트입니다.
+서울시립대학교 전자전기컴퓨터공학부 김성태의 프로젝트 경험을 소개하는 개인 포트폴리오이자 HTML/CSS/JavaScript 기초 학습 과제입니다. 기존 섹션과 인터랙션을 유지하면서 실제 경험을 반영했습니다.
+
+### Featured Projects
+
+- **Flat-on**: 디스플레이허브와 협업한 반자동 캐비닛 평탄화 장치. 팀장으로 기업 컨택, 현장 인터뷰, 설계·검증 및 일정 조율에 참여했습니다. 직무혁신 성과 팀 공모전 최우수상, 특허 출원 진행.
+- **Energy AI Workflow Hackathon**: n8n, Lovable, Slack을 활용한 ESS 운영 의사결정 지원 Workflow를 기획·구현했습니다. 고려대학교 Energy AI Workflow Hackathon 금상.
+
+대표 프로젝트는 정적 article 카드이며, 그 아래 GitHub Projects는 기존 API로 별도 렌더링합니다. Skills에 표시한 경험 기술과 위 프로젝트의 도구는 이 웹사이트의 의존성이 아닙니다.
 
 주요 목표는 다음과 같습니다.
 
@@ -35,7 +43,6 @@
 - CSS3
 - JavaScript (ES6+)
 - GitHub API
-- GitHub Pages
 
 ---
 
@@ -65,14 +72,16 @@
 - 이름, 이메일, 메시지 필수값 검사
 - 이메일 형식 검사
 - 입력 필드별 에러 메시지 출력
-- 제출 성공 메시지 출력
+- 검증 완료 메시지 출력 (실제 전송 없음)
+- 오류 필드의 aria-invalid 갱신 및 첫 오류 필드로 포커스 이동
+- 검증 완료 후에도 입력 내용 유지
 
 ---
 
 ## 폴더 구조
 
 ```bash
-portfolio-website/
+b1-1/
 ├── index.html
 ├── README.md
 ├── css/
@@ -80,10 +89,7 @@ portfolio-website/
 ├── js/
 │   └── main.js
 └── images/
-    ├── profile.jpg
-    ├── screenshot-desktop.png
-    ├── screenshot-mobile.png
-    └── screenshot-dark.png
+    └── profile.jpg
 ```
 
 ---
@@ -94,7 +100,7 @@ portfolio-website/
 - Hero
 - About
 - Skills
-- Projects
+- Projects: Featured Projects + GitHub Projects
 - Contact
 - Footer
 
@@ -176,7 +182,9 @@ portfolio-website/
 
 GitHub API를 사용해 내 저장소 목록을 불러오도록 구현했습니다.
 
-- Endpoint: `https://api.github.com/users/[GitHub 아이디]/repos`
+- Endpoint: `https://api.github.com/users/tjdxo/repos?sort=updated`
+
+Fork 저장소를 제외하고 최근 업데이트 순으로 최대 6개를 표시합니다. 계정은 `js/main.js`의 `GITHUB_USERNAME`에서 설정합니다.
 
 처리한 상태는 다음과 같습니다.
 
@@ -191,7 +199,7 @@ GitHub API를 사용해 내 저장소 목록을 불러오도록 구현했습니�
 
 ## 상호작용 기준값
 
-README에 명시해야 하는 기준값은 아래와 같습니다.
+현재 구현의 기준값은 아래와 같습니다.
 
 - 스크롤 탑 버튼 표시 기준: **300px**
 - 헤더 스타일 변경 기준: **60px**
@@ -208,36 +216,23 @@ README에 명시해야 하는 기준값은 아래와 같습니다.
 
 ---
 
-## 스크린샷
-
-### 데스크톱
-![Desktop Screenshot](./images/screenshot-desktop.png)
-
-### 모바일
-![Mobile Screenshot](./images/screenshot-mobile.png)
-
-### 다크 모드
-![Dark Mode Screenshot](./images/screenshot-dark.png)
-
----
-
 ## 실행 방법
 
 1. 저장소를 클론합니다.
 
 ```bash
-git clone https://github.com/[GitHub 아이디]/portfolio-website.git
+git clone https://github.com/tjdxo/b1-1.git
 ```
 
 2. 프로젝트 폴더로 이동합니다.
 
 ```bash
-cd portfolio-website
+cd b1-1
 ```
 
 3. VS Code에서 프로젝트를 엽니다.
 
-4. Live Server로 `index.html`을 실행합니다.
+4. Live Server로 `index.html`을 실행합니다. 별도의 빌드나 패키지 설치는 필요하지 않습니다.
 
 ---
 
@@ -245,14 +240,14 @@ cd portfolio-website
 
 - 순수 HTML, CSS, JavaScript 사용
 - 외부 라이브러리 미사용
-- 최신 Chrome 브라우저 기준 동작 확인
+- API 저장소 조회에는 인터넷 연결이 필요합니다.
 
 ---
 
 ## 아쉬운 점 / 개선 방향
 
 - 현재 Contact 폼은 실제 전송 없이 프론트엔드 검증만 구현되어 있습니다.
-- 이후 Formspree 또는 EmailJS를 연동해 실제 메일 전송 기능으로 확장할 수 있습니다.
+- 실제 메시지 전송 기능은 이번 과제 범위에 포함하지 않았습니다.
 - 프로젝트 필터링, 타이핑 효과, 시스템 다크 모드 감지 기능도 추가 가능합니다.
 
 ---
