@@ -337,7 +337,7 @@ const handleFormSubmit = (event) => {
 
   if (!isFormValid) return;
 
-  formSuccess.textContent = "메시지가 성공적으로 준비되었습니다!";
+  formSuccess.textContent = "메시지가 성공적으로 전송되었습니다! (실제 전송 기능은 구현되어 있지 않습니다.)";
   contactForm.reset();
 
   state.formErrors = {
